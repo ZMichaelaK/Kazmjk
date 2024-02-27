@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
+import { useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import CartPage from "./Components/Cart/CartPage";
 import ItemPage from "./Components/Item/ItemPage";
@@ -9,7 +10,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import DisplayCart from "./Components/Cart/DisplayCart";
 import ModalPage from "./Components/Modal and homepage/ModalPage";
+
 function App() {
+  const [isLoggedIn, setisLoggedIn] = useState(null);
+  const logIn = () => {
+    setisLoggedIn(true);
+  };
+  const logOut = () => {
+    setisLoggedIn(false);
+  };
   return (
     <header>
       <Router>
@@ -65,6 +74,11 @@ function App() {
               </ul>
             </div>
           </div>
+          {isLoggedIn ? (
+            <button onClick={logOut}>Logout</button>
+          ) : (
+            <button onClick={logIn}>Login</button>
+          )}
         </nav>
         <Routes>
           <Route path="/" element={<Homepage />} />
