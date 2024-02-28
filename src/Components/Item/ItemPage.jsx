@@ -1,8 +1,12 @@
+import React from "react";
+import CreateItem from "./CreateItem";
+
 function ItemPage() {
   return (
     <div>
-      <h2> This is the item page </h2>
+      <CreateItem />
     </div>
   );
 }
+
 export default ItemPage;

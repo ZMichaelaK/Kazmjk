@@ -10,12 +10,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import DisplayCart from "./Components/Cart/DisplayCart";
 import ModalPage from "./Components/Modal and homepage/ModalPage";
+import Protected from "./Components/Modal and homepage/Protected";
+import LoginPage from "./Components/Modal and homepage/LoginPage";
+import DisplayItem from "./Components/Item/DisplayItem";
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(null);
+  const [isLoggedIn, setisLoggedIn] = useState(false);
   const logIn = () => {
     setisLoggedIn(true);
   };
+
   const logOut = () => {
     setisLoggedIn(false);
   };
@@ -82,7 +86,8 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/Items" element={<ItemPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/Items" element={<LoginPage />} />
         </Routes>
       </Router>
     </header>

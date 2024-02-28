@@ -1,8 +1,12 @@
-import { Navigate } from "react-router-dom";
-const Protected = ({ isLoggedIn, children }) => {
-  if (!isLoggedIn) {
-    return <Navigate to="/Homepage" replace />;
-  }
-  return children;
+import React from "react";
+import { Route, Navigate } from "react-router-dom";
+
+const Protected = ({ element, isLoggedIn, ...rest }) => {
+  return isLoggedIn ? (
+    <Route {...rest} element={element} />
+  ) : (
+    <useNavigate to="/login" replace />
+  );
 };
+
 export default Protected;
