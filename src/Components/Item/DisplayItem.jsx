@@ -12,6 +12,7 @@ function DisplayItems(props) {
         itemDescription={item.description}
         itemPrice={item.price}
         itemQuantity={item.quantity}
+        imageUrl={item.imageUrl}
       />
     );
   }
