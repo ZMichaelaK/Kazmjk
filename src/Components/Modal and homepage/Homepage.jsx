@@ -1,7 +1,15 @@
+import React from "react";
+
 function Homepage() {
   return (
     <div>
-      <h2> I am a little homepage </h2>
+      <h2>Welcome to Tem Shop</h2>
+      <img
+        src="https://th.bing.com/th/id/R.a277bfb1d0f189ac7f12b46472ad3ba1?rik=NGX%2bOeEeX9egzA&pid=ImgRaw&r=0"
+        height="800px"
+        length="100px"
+        alt="Tem"
+      />
     </div>
   );
 }

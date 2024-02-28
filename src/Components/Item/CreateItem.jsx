@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Card, CardBody } from "react-bootstrap";
 import DisplayItem from "./DisplayItem";
 
 function CreateItem(props) {
@@ -8,6 +9,7 @@ function CreateItem(props) {
   const [itemPrice, setItemPrice] = useState("");
   const [itemQuantity, setItemQuantity] = useState("");
   const [items, setItems] = useState([]);
+  const [submittedItem, setSubmittedItem] = useState(null);
 
   function getItems() {
     axios
@@ -24,7 +26,7 @@ function CreateItem(props) {
 
   function createItem() {
     axios
-      .post("http://localhost:8082/Items/create", {
+      .post("http://localhost:3000/Items/create", {
         itemName,
         itemDescription,
         itemPrice,
@@ -33,6 +35,7 @@ function CreateItem(props) {
       })
       .then((response) => {
         console.log(response);
+        setSubmittedItem(response.data); // Store submitted item for display
         setItemName("");
         setItemDescription("");
         setItemPrice("");
@@ -85,7 +88,16 @@ function CreateItem(props) {
       </form>
       <br />
       <br />
-      <createItem items={items} />
+      {submittedItem && (
+        <Card className="col-sm-6 col-md-4 col-lg-3 m-4">
+          <CardBody className="card-body card-text">
+            <h4 className="card-title">{submittedItem.itemName}</h4>
+            <p className="card-text">{submittedItem.itemDescription}</p>
+            <p className="card-text">Price: £{submittedItem.itemPrice}</p>
+            <p className="card-text">Quantity: {submittedItem.itemQuantity}</p>
+          </CardBody>
+        </Card>
+      )}
     </div>
   );
 }
