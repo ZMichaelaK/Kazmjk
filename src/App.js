@@ -10,8 +10,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import DisplayCart from "./Components/Cart/DisplayCart";
 import ModalPage from "./Components/Modal and homepage/ModalPage";
+import ItemEdit from "./Components/Item/ItemEdit";
 import ProtectedRoutes from "./Components/Modal and homepage/ProtectedRoutes";
 import LoginPage from "./Components/Modal and homepage/LoginPage";
+
 
 function App() {
   return (
@@ -70,15 +72,20 @@ function App() {
             </div>
           </div>
         </nav>
-        <Routes>
+          <Routes>
           <Route path="/" element={<ProtectedRoutes />}>
             <Route element={<Homepage />} path="/" />
           </Route>
           <Route path="LoginPage" element={<LoginPage />} />
           <Route path="Items" element={<ItemPage />} />
+            <Route path="/Update" element={<ItemEdit/>} />
         </Routes>
       </Router>
     </header>
+
+
+
+
   );
 }
 

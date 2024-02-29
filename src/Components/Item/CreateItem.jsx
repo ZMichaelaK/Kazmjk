@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, CardBody } from "react-bootstrap";
 import DisplayItem from "./DisplayItem";
+import ItemStructure from "./ItemStructure";
 
 function CreateItem(props) {
   const [itemName, setItemName] = useState("");
@@ -49,10 +50,26 @@ function CreateItem(props) {
       .catch((err) => console.error(err));
   }
 
+  const newItems = [];
+  for(let item of items) {
+    newItems.push(
+      <ItemStructure
+      key={item.itemName + "" + item.price}
+      id={item.id}
+      imageUrl={item.imageUrl}
+      itemName={item.itemName}
+      itemDescription={item.itemDescription}
+      price={item.price}
+      quantity={item.quantity}
+      getItems={getItems}
+      />
+    )
+  }
+
   return (
     <div>
-      <h1>Items &nbsp;</h1>
-      <form onSubmit={e => {
+      <h1 style={{textAlign: "center"}}>Items &nbsp;</h1>
+      <form style={{margin: "auto", maxWidth: "30%", fontSize: "20px", backgroundColor: "lightBlue", padding: "30px", borderRadius: "10%"}} onSubmit={e => {
         e.preventDefault();
         createItem();
       }}>
@@ -64,6 +81,7 @@ function CreateItem(props) {
           type="text"
           className="form-control"
         />
+        <br />
         <label htmlFor="itemDescription">Item Description: </label>
         <input
           value={itemDescription}
@@ -72,6 +90,7 @@ function CreateItem(props) {
           type="text"
           className="form-control"
         />
+        <br />
         <label htmlFor="itemPrice">Item Price: </label>
         <input
           value={price}
@@ -80,6 +99,7 @@ function CreateItem(props) {
           type="text"
           className="form-control"
         />
+        <br />
         <label htmlFor="itemQuantity">Item Quantity: </label>
         <input
           value={quantity}
@@ -98,24 +118,17 @@ function CreateItem(props) {
           className="form-control"
         />
         <br />
-        <button type="submit" className="btn btn-success btn-md">
+        <button style={{marginLeft: "43%"}} type="submit" className="btn btn-success btn-lg">
           Submit
         </button>
       </form>
       <br />
       <br />
-      {submittedItem && (
-        <Card className="col-sm-6 col-md-4 col-lg-3 m-4">
-          <CardBody className="card-body card-text">
-            <img src={props.imageUrl}/>
-            <h4 className="card-title">{props.itemName}</h4>
-            <p className="card-text">{props.itemDescription}</p>
-            <p className="card-text">Price: £{props.price}</p>
-            <p className="card-text">Quantity: {props.quantity}</p>
-          </CardBody>
-        </Card>
-      )}
+      <div className="row row-cols-4 g-4 mt-1">{newItems}</div>
+
     </div>
+
+    
   );
 }
 
