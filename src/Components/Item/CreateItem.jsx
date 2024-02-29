@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, CardBody } from "react-bootstrap";
 import DisplayItem from "./DisplayItem";
+import ItemStructure from "./ItemStructure";
 
 function CreateItem(props) {
   const [itemName, setItemName] = useState("");
@@ -47,6 +48,20 @@ function CreateItem(props) {
         
       })
       .catch((err) => console.error(err));
+  }
+
+  const newItems = [];
+  for(let item of items) {
+    newItems.push(
+      <ItemStructure
+      key={item.itemName + "" + item.price}
+      imageUrl={item.imageUrl}
+      itemName={item.itemName}
+      itemDescription={item.itemDescription}
+      price={item.price}
+      quantity={item.quantity}
+      />
+    )
   }
 
   return (
@@ -104,18 +119,11 @@ function CreateItem(props) {
       </form>
       <br />
       <br />
-      {submittedItem && (
-        <Card className="col-sm-6 col-md-4 col-lg-3 m-4">
-          <CardBody className="card-body card-text">
-            <img src={props.imageUrl}/>
-            <h4 className="card-title">{props.itemName}</h4>
-            <p className="card-text">{props.itemDescription}</p>
-            <p className="card-text">Price: £{props.price}</p>
-            <p className="card-text">Quantity: {props.quantity}</p>
-          </CardBody>
-        </Card>
-      )}
+      <div className="row row-cols-4 g-4 mt-1">{newItems}</div>
+
     </div>
+
+    
   );
 }
 
