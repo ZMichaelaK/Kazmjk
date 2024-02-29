@@ -84,7 +84,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/Items" element={<ItemPage />} />
-          <Route path="/Update" element={<ItemEdit/>} />
+          <Route path="/update/:id" element={<ItemEdit/>} />
         </Routes>
       </Router>
     </header>
