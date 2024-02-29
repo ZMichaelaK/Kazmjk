@@ -10,19 +10,24 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-wrapper">
-      <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div style={{margin: "auto", textAlign: "center", transform: "translate(40px, 30%)"}} className="login-wrapper">
+      <h1 style={{fontSize: "60px"}}>Please Log In</h1>
+      <br />
+      <form style={{fontSize:"30px"}} onSubmit={handleSubmit}>
         <label>
-          <p>Username</p>
+          Username
+          <br/>
           <input type="text" />
         </label>
+        <br />
         <label>
-          <p>Password</p>
+        Password
+          <br/>
           <input type="password" />
         </label>
-        <div>
-          <button type="submit">Submit</button>
+        <br />
+        <div style={{marginTop: "20px"}}>
+          <button className="btn btn-success btn-lg" type="submit">Submit</button>
         </div>
       </form>
     </div>
