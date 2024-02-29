@@ -7,7 +7,7 @@ function CreateItem(props) {
   const [itemName, setItemName] = useState("");
   const [itemDescription, setItemDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [itemQuantity, setItemQuantity] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [items, setItems] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
   const [submittedItem, setSubmittedItem] = useState([]);
@@ -31,7 +31,7 @@ function CreateItem(props) {
         itemName,
         itemDescription,
         price,
-        itemQuantity,
+        quantity,
         items,
         imageUrl
       })
@@ -41,7 +41,7 @@ function CreateItem(props) {
         setItemName("");
         setItemDescription("");
         setPrice("");
-        setItemQuantity("");
+        setQuantity("");
         setImageUrl("");
         getItems();
         
@@ -82,8 +82,8 @@ function CreateItem(props) {
         />
         <label htmlFor="itemQuantity">Item Quantity: </label>
         <input
-          value={itemQuantity}
-          onChange={(e) => setItemQuantity(e.target.value)}
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
           id="itemQuantity"
           type="text"
           className="form-control"
@@ -111,7 +111,7 @@ function CreateItem(props) {
             <h4 className="card-title">{props.itemName}</h4>
             <p className="card-text">{props.itemDescription}</p>
             <p className="card-text">Price: £{props.price}</p>
-            <p className="card-text">Quantity: {props.itemQuantity}</p>
+            <p className="card-text">Quantity: {props.quantity}</p>
           </CardBody>
         </Card>
       )}
