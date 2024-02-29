@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import DisplayCart from "./Components/Cart/DisplayCart";
 import ModalPage from "./Components/Modal and homepage/ModalPage";
+import ItemEdit from "./Components/Item/ItemEdit";
 
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(null);
@@ -83,6 +84,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/Items" element={<ItemPage />} />
+          <Route path="/Update" element={<ItemEdit/>} />
         </Routes>
       </Router>
     </header>

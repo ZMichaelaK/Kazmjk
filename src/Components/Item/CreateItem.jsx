@@ -55,19 +55,21 @@ function CreateItem(props) {
     newItems.push(
       <ItemStructure
       key={item.itemName + "" + item.price}
+      id={item.id}
       imageUrl={item.imageUrl}
       itemName={item.itemName}
       itemDescription={item.itemDescription}
       price={item.price}
       quantity={item.quantity}
+      getItems={getItems}
       />
     )
   }
 
   return (
     <div>
-      <h1>Items &nbsp;</h1>
-      <form onSubmit={e => {
+      <h1 style={{textAlign: "center"}}>Items &nbsp;</h1>
+      <form style={{margin: "auto", maxWidth: "30%", fontSize: "20px", backgroundColor: "lightBlue", padding: "30px", borderRadius: "10%"}} onSubmit={e => {
         e.preventDefault();
         createItem();
       }}>
@@ -79,6 +81,7 @@ function CreateItem(props) {
           type="text"
           className="form-control"
         />
+        <br />
         <label htmlFor="itemDescription">Item Description: </label>
         <input
           value={itemDescription}
@@ -87,6 +90,7 @@ function CreateItem(props) {
           type="text"
           className="form-control"
         />
+        <br />
         <label htmlFor="itemPrice">Item Price: </label>
         <input
           value={price}
@@ -95,6 +99,7 @@ function CreateItem(props) {
           type="text"
           className="form-control"
         />
+        <br />
         <label htmlFor="itemQuantity">Item Quantity: </label>
         <input
           value={quantity}
@@ -113,7 +118,7 @@ function CreateItem(props) {
           className="form-control"
         />
         <br />
-        <button type="submit" className="btn btn-success btn-md">
+        <button style={{marginLeft: "43%"}} type="submit" className="btn btn-success btn-lg">
           Submit
         </button>
       </form>
