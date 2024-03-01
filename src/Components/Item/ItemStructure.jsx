@@ -19,7 +19,7 @@ function ItemStructure(props) {
 
     return ( 
         <div>
-               <div style={{marginLeft: "20px", }} className='col'>
+               <div style={{marginLeft: "20px", maxWidth: "100%"}} className='col'>
             <div className='card'>
             <img src={props.imageUrl} className='card-img-top' alt="house" />
                 <div style={{fontWeight: "bold", textAlign: "center", fontSize: "20px"}} className='card-body'>
@@ -31,9 +31,18 @@ function ItemStructure(props) {
                             <li className='list-group-item'>Quantity: {props.quantity}</li>
                         </ul>
                         <br />
-                        <button className='btn btn-success '>Add to Cart</button> 
-                     <button style={{marginLeft: "10px"}} className='btn btn-primary ' onClick={handleEdit}>Edit Item</button> 
-                     <button style={{marginLeft: "10px"}} className='btn btn-danger ' onClick={deleteItem}>Delete Item</button> 
+                        <ul className='list-group list-group-flush'>
+                        <li className='list-group-item'>
+                        <button className='btn btn-success' style={{marginLeft: "10px", maxWidth: "100%"}} >Add to Cart</button> 
+                        </li>
+                        <li className='list-group-item'>
+                     <button style={{marginLeft: "10px", maxWidth: "100%"}} className='btn btn-primary ' onClick={handleEdit}>Edit Item</button>
+                     </li>
+                     <li className='list-group-item'> 
+                     <button style={{marginLeft: "10px", maxWidth: "100%"}} className='btn btn-danger ' onClick={deleteItem}>Delete Item</button> 
+                     </li>
+
+                     </ul>
                     </div>
                 </div>
             </div>
