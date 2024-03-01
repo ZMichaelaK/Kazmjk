@@ -7,7 +7,7 @@ function ItemPage() {
       <div style={{ flex: 1 }}>
         <CreateItem />
       </div>
-      <div style={{ flex: 1, display: "flex", flexDirection: "column-reverse" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", marginRight: "30px", maxWidth: "600px", border: "3px solid black", padding: "10px" }}>
         <CartPage />
       </div>
     </div>

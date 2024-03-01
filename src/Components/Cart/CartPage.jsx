@@ -3,14 +3,15 @@ function CartPage() {
     <div
       style={{
         display: "flex",
-        flexDirection: "column-reverse",
-        marginRight: "30px",
-        maxWidth: "600px",
+        flexDirection: "column",
+        alignItems: "center",
         border: "3px solid black",
-        justifyContent: "flex-end"
+        padding: "10px",
       }}
     >
+      <div>
       <h1>Cart</h1>
+      </div>
     </div>
   );
 }
