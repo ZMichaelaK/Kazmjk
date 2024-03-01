@@ -30,7 +30,7 @@ function ItemStructure(props) {
                             <li className='list-group-item'>£{props.price}</li>
                             <li className='list-group-item'>Quantity: {props.quantity}</li>
                         </ul>
-                        <br />
+                      
                         <ul className='list-group list-group-flush'>
                         <li className='list-group-item'>
                         <button className='btn btn-success' style={{marginLeft: "10px", maxWidth: "100%"}} >Add to Cart</button> 
