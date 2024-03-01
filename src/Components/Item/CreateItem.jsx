@@ -34,7 +34,7 @@ function CreateItem(props) {
         price,
         quantity,
         items,
-        imageUrl
+        imageUrl,
       })
       .then((response) => {
         console.log(response);
@@ -45,34 +45,45 @@ function CreateItem(props) {
         setQuantity("");
         setImageUrl("");
         getItems();
-        
       })
       .catch((err) => console.error(err));
   }
 
   const newItems = [];
-  for(let item of items) {
+  for (let item of items) {
     newItems.push(
       <ItemStructure
-      key={item.itemName + "" + item.price}
-      id={item.id}
-      imageUrl={item.imageUrl}
-      itemName={item.itemName}
-      itemDescription={item.itemDescription}
-      price={item.price}
-      quantity={item.quantity}
-      getItems={getItems}
+        key={item.itemName + "" + item.price}
+        id={item.id}
+        imageUrl={item.imageUrl}
+        itemName={item.itemName}
+        itemDescription={item.itemDescription}
+        price={item.price}
+        quantity={item.quantity}
+        getItems={getItems}
       />
-    )
+    );
   }
 
   return (
     <div>
-      <h1 style={{textAlign: "center"}}>Items &nbsp;</h1>
-      <form style={{margin: "auto", maxWidth: "30%", fontSize: "20px", backgroundColor: "lightBlue", padding: "30px", borderRadius: "10%"}} onSubmit={e => {
-        e.preventDefault();
-        createItem();
-      }}>
+      <h1 style={{ textAlign: "center", justifyContent: "center" }}>
+        Items &nbsp;
+      </h1>
+      <form
+        style={{
+          margin: "auto",
+          fontSize: "20px",
+          backgroundColor: "lightBlue",
+          padding: "30px",
+          borderRadius: "10%",
+          maxWidth: "600px",
+        }}
+        onSubmit={(e) => {
+          e.preventDefault();
+          createItem();
+        }}
+      >
         <label htmlFor="itemName">Item Name: </label>
         <input
           value={itemName}
@@ -118,17 +129,18 @@ function CreateItem(props) {
           className="form-control"
         />
         <br />
-        <button style={{marginLeft: "43%"}} type="submit" className="btn btn-success btn-lg">
+        <button
+          style={{ marginLeft: "43%" }}
+          type="submit"
+          className="btn btn-success btn-lg"
+        >
           Submit
         </button>
       </form>
       <br />
       <br />
       <div className="row row-cols-4 g-4 mt-1">{newItems}</div>
-
     </div>
-
-    
   );
 }
 

@@ -14,7 +14,6 @@ import ItemEdit from "./Components/Item/ItemEdit";
 import ProtectedRoutes from "./Components/Modal and homepage/ProtectedRoutes";
 import LoginPage from "./Components/Modal and homepage/LoginPage";
 
-
 function App() {
   return (
     <header>
@@ -40,7 +39,11 @@ function App() {
             >
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/Homepage">
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    href="/Homepage"
+                  >
                     Home
                   </a>
                 </li>
@@ -65,28 +68,22 @@ function App() {
                     </a>
                   </div>
                 </li>
-                <li className="nav-item">
-                  <DisplayCart />
-                </li>
+                <li className="nav-item"></li>
               </ul>
             </div>
           </div>
         </nav>
-          <Routes>
+        <Routes>
           <Route path="/" element={<ProtectedRoutes />}>
             <Route element={<Homepage />} path="/" />
           </Route>
-          <Route element={<Homepage/>} path="/Homepage"/>
+          <Route element={<Homepage />} path="/Homepage" />
           <Route path="LoginPage" element={<LoginPage />} />
           <Route path="Items" element={<ItemPage />} />
-            <Route path="/update/:id" element={<ItemEdit/>} />
+          <Route path="/update/:id" element={<ItemEdit />} />
         </Routes>
       </Router>
     </header>
-
-
-
-
   );
 }
 

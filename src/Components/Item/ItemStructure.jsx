@@ -19,7 +19,7 @@ function ItemStructure(props) {
 
     return ( 
         <div>
-               <div style={{marginLeft: "20px"}} className='col'>
+               <div style={{marginLeft: "20px", }} className='col'>
             <div className='card'>
             <img src={props.imageUrl} className='card-img-top' alt="house" />
                 <div style={{fontWeight: "bold", textAlign: "center", fontSize: "20px"}} className='card-body'>
