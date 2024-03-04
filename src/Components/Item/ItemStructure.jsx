@@ -6,19 +6,43 @@ import AddItemToCart from "../Cart/AddItemToCart";
 
 
 function ItemStructure(props) {
-    const [isInCart, setIsInCart] = useState("");
-    const [carts, setCarts] = useState([]);
-    const navigate = useNavigate();
+  const [isInCart, setIsInCart] = useState("");
+  const [carts, setCarts] = useState([]);
+  const navigate = useNavigate();
 
-     const handleEdit = () =>{
-         navigate("/update/" + props.id)
+  const handleEdit = () => {
+    navigate("/update/" + props.id);
+  };
 
-     }
+  function deleteItem() {
+    axios
+      .delete("http://localhost:8085/item/delete/" + props.id)
+      .then((response) => {
+        props.getItems();
+      })
+      .catch((err) => console.error(err));
+  }
 
-    function deleteItem (){
-        axios.delete("http://localhost:8085/item/delete/" + props.id)
-        .then(response => {props.getItems()})
-        .catch(err => console.error(err))
+        function addToCart(){
+            axios.post("http://localhost:8085/cart/create",{
+            isInCart,
+            })
+            .then((response) => {
+                console.log(response);
+                setIsInCart("");
+            })
+            .catch((err) => console.error(err));
+        }
+
+        const newCart = [];
+        for (let cart of carts) {
+            newCart.push(
+                <CartStructure
+                key={cart.isInCart}
+                isInCart={cart.isInCart}
+                item={item.id}
+                />
+            )
         }
 
     return ( 
@@ -37,7 +61,7 @@ function ItemStructure(props) {
                       
                         <ul className='list-group list-group-flush'>
                         <li className='list-group-item'>
-                        <AddItemToCart/>
+                        <button className='btn btn-success' style={{marginLeft: "10px", maxWidth: "100%"}} onClick={addToCart} >Add to Cart</button> 
                         </li>
                         <li className='list-group-item'>
                      <button style={{marginLeft: "10px", maxWidth: "100%"}} className='btn btn-primary ' onClick={handleEdit}>Edit Item</button>
@@ -51,7 +75,7 @@ function ItemStructure(props) {
                 </div>
             </div>
         </div>
-        <div></div>
+        <div>{newCart}</div>
         </div>
      );
 }
