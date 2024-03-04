@@ -9,7 +9,7 @@ function Homepage() {
         height="800px"
         length="100px"
         alt="Tem"
-        style={{marginLeft: "660px", marginTop: "50px"}}
+        style={{display: "flex", margin: "auto"}}
       />
     </div>
   );
