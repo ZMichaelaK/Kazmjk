@@ -1,3 +1,6 @@
+import CartStructure from "./CartStructure";
+import CreateCart from "./CreateCart";
+
 function CartPage() {
   return (
     <div
@@ -11,6 +14,10 @@ function CartPage() {
     >
       <div>
       <h1>Cart</h1>
+  
+      </div>
+      <div>
+      <CreateCart/>
       </div>
     </div>
   );

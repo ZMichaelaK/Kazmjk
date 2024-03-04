@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CartStructure from '../Cart/CartStructure';
+import AddItemToCart from "../Cart/AddItemToCart";
 
 
 function ItemStructure(props) {
@@ -20,28 +21,6 @@ function ItemStructure(props) {
         .catch(err => console.error(err))
         }
 
-        function addToCart(){
-            axios.post("http://localhost:8085/cart/create",{
-            isInCart,
-            })
-            .then((response) => {
-                console.log(response);
-                setIsInCart("");
-            })
-            .catch((err) => console.error(err));
-        }
-
-        const newCart = [];
-        for (let cart of carts) {
-            newCart.push(
-                <CartStructure
-                key={cart.isInCart}
-                isInCart={cart.isInCart}
-                item={item.id}
-                />
-            )
-        }
-
     return ( 
         <div>
                <div style={{marginLeft: "20px", maxWidth: "100%"}} className='col'>
@@ -58,7 +37,7 @@ function ItemStructure(props) {
                       
                         <ul className='list-group list-group-flush'>
                         <li className='list-group-item'>
-                        <button className='btn btn-success' style={{marginLeft: "10px", maxWidth: "100%"}} onClick={addToCart} >Add to Cart</button> 
+                        <AddItemToCart/>
                         </li>
                         <li className='list-group-item'>
                      <button style={{marginLeft: "10px", maxWidth: "100%"}} className='btn btn-primary ' onClick={handleEdit}>Edit Item</button>
@@ -72,7 +51,7 @@ function ItemStructure(props) {
                 </div>
             </div>
         </div>
-        <div>{newCart}</div>
+        <div></div>
         </div>
      );
 }
