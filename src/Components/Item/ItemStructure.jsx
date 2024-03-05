@@ -11,12 +11,12 @@ function ItemStructure(props) {
   const params = useParams();
 
   const handleEdit = () => {
-    navigate("/update/" + props.id);
+    navigate("/update/" + props.itemId);
   };
 
   function deleteItem() {
     axios
-      .delete("http://localhost:8085/item/delete/" + props.id)
+      .delete("http://localhost:8085/item/delete/" + props.itemId)
       .then((response) => {
         props.getItems();
       })

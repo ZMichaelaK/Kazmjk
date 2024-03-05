@@ -32,10 +32,9 @@ function CreateCart() {
 
     axios
       .post("http://localhost:8085/cart/create", {
-        id: null,
       })
       .then((response) => {
-        console.log(localStorage.getItem("cartId"));
+        console.log(`Cart ID: ${response.data.id}`);
         getCarts(response.data);
       })
       .catch((err) => {

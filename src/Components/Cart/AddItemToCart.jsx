@@ -3,19 +3,20 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 function AddItemToCart() {
-  const [itemName, setItemName] = useState("");
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
+
   const params = useParams();
 
   const handleClick = () => {
     //id used to additem to cart should be the sa,e id as the one from creae cart button
     axios
-      .put("http://localhost:8085/cart/update/" + params.id, {
+      .patch("http://localhost:8085/item/update/" + params.itemId, {
         //item details
+        cart: {id: params.id}
       })
 
-      .then((response) => {})
+      .then((response) => {
+        console.log(response)
+      })
       .catch((err) => console.error(err));
   };
   return (

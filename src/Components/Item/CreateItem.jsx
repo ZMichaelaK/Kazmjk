@@ -54,7 +54,7 @@ function CreateItem(props) {
     newItems.push(
       <ItemStructure
         key={item.itemName + "" + item.price}
-        id={item.id}
+        itemId={item.itemId}
         imageUrl={item.imageUrl}
         itemName={item.itemName}
         itemDescription={item.itemDescription}

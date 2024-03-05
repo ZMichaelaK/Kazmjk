@@ -13,7 +13,7 @@ function ItemEdit() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:8085/item/get/" + params.id)
+    axios.get("http://localhost:8085/item/get/" + params.itemId)
     .then((res) => {
         console.log(res);
         setImageUrl(res.data.imageUrl);
@@ -25,7 +25,7 @@ function ItemEdit() {
 }, []);
 
   function updateItem (){
-    axios.put("http://localhost:8085/item/update/" + params.id, {
+    axios.put("http://localhost:8085/item/update/" + params.itemId, {
         itemName,
         itemDescription,
         price,
