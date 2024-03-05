@@ -18,8 +18,8 @@ function CreateCart() {
     for (let cart of carts){
         cartList.push(
             <CartStructure
+            key={cart.id}
             id={cart.id}
-            item={cart.itemId}
             />
         )
     }

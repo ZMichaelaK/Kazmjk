@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CartStructure from '../Cart/CartStructure';
@@ -9,6 +9,7 @@ function ItemStructure(props) {
   const [isInCart, setIsInCart] = useState("");
   const [carts, setCarts] = useState([]);
   const navigate = useNavigate();
+  const params = useParams();
 
   const handleEdit = () => {
     navigate("/update/" + props.id);
@@ -26,6 +27,7 @@ function ItemStructure(props) {
         function addToCart(){
             axios.post("http://localhost:8085/cart/create",{
             isInCart,
+            id:{id: params.id}
             })
             .then((response) => {
                 console.log(response);
@@ -39,8 +41,12 @@ function ItemStructure(props) {
             newCart.push(
                 <CartStructure
                 key={cart.isInCart}
+                id={cart.id}
                 isInCart={cart.isInCart}
-                item={item.id}
+                itemName={cart.itemName}
+                quantity={cart.quantity}
+                price={cart.price}
+
                 />
             )
         }

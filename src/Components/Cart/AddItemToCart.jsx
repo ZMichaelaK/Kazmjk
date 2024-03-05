@@ -14,6 +14,7 @@ function AddItemToCart() {
         .then(response => {
             setItemName("");
             setQuantity("");
+            setPrice("");
         })
         .catch(err => console.error(err))
     }
