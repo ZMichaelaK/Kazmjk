@@ -2,46 +2,55 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CartStructure from "./CartStructure";
 
+
 function CreateCart() {
-    const cartList = [];
-    const [carts, setCarts] = useState([]);
+  const cartList = [];
+  const [carts, setCarts] = useState([]);
 
-    function getCarts(){
-        axios.get("http://localhost:8085/cart/get")
-        .then((response) => {
-            setCarts(response.data)
-        })
-        .catch(console.log())
-    }
-    useEffect(() => {getCarts()}, [])
+  function getCarts() {
+    axios
+      .get("http://localhost:8085/cart/get")
+      .then((response) => {
+        setCarts(response.data);
+      })
+      .catch(console.log());
+  }
+  useEffect(() => {
+    getCarts();
+  }, []);
 
-    for (let cart of carts){
-        cartList.push(
-            <CartStructure
-            key={cart.id}
-            id={cart.id}
-            />
-        )
-    }
+  for (let cart of carts) {
+    cartList.push(<CartStructure key={cart.id} id={cart.id} />);
+  }
 
-    const handleClick = () => {
-        axios.post("http://localhost:8085/cart/create")
-        .then(response => {getCarts() })
-        .catch(err => {console.error(err)})
+  const handleClick = () => {
+    //if cart id dosnt exist (!cartId) then post call axios
+    //else if then return null, console.log("cart already exists") - you need to pass in a unique another cart
+    //alert("cart already created");
 
-    }
-    return ( 
+    // localStorage.setItem("cartId", createRandomCartID());
 
-        <div>
-        <div>
-            <button onClick={handleClick}>Create New Cart</button>
-        </div>
+    axios
+      .post("http://localhost:8085/cart/create", {
+        id: null,
+      })
+      .then((response) => {
+        console.log(localStorage.getItem("cartId"));
+        getCarts(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+  return (
+    <div>
+      <div>
+        <button onClick={handleClick}>Create New Cart</button>
+      </div>
 
-        <div>
-            {cartList}
-        </div>
-        </div>
-     );
+      <div>{cartList}</div>
+    </div>
+  );
 }
 
 export default CreateCart;
