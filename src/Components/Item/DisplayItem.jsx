@@ -7,7 +7,7 @@ function DisplayItems(props) {
   for (const item of props.items) {
     itemArray.push(
       <CreateItem
-        key={item.id}
+        key={item.itemId}
         itemName={item.name}
         itemDescription={item.description}
         itemPrice={item.price}
