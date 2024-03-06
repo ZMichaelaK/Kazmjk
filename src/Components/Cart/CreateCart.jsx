@@ -34,7 +34,8 @@ function CreateCart() {
       .post("http://localhost:8085/cart/create", {
       })
       .then((response) => {
-        console.log(`Cart ID: ${response.data.id}`);
+        console.log(`Cart Created, Cart ID: ${response.data.id}`);
+        console.log(response);
         getCarts(response.data);
       })
       .catch((err) => {
