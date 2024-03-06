@@ -1,17 +1,15 @@
 import CartStructure from "./CartStructure";
 import CreateCart from "./CreateCart";
+import {useState, useEffect} from "react";
+import axios from "axios";
+import Cart from "./Cart";
 
 function CartPage() {
+
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        border: "3px solid black",
-        padding: "10px",
-      }}
     >
+      <div>
       <div>
       <h1>Cart</h1>
   
@@ -19,6 +17,17 @@ function CartPage() {
       <div>
       <CreateCart/>
       </div>
+      <div>
+      
+      </div>
+      <div>
+        
+      </div>
+    </div>
+    <div>
+      <br />
+      <Cart/>
+    </div>
     </div>
   );
 }

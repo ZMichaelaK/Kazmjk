@@ -19,9 +19,9 @@ function CreateCart() {
     getCarts();
   }, []);
 
-  for (let cart of carts) {
-    cartList.push(<CartStructure key={cart.id} id={cart.id} />);
-  }
+  // for (let cart of carts) {
+  //   cartList.push(<CartStructure key={cart.id} id={cart.id} />);
+  // }
 
   const handleClick = () => {
     //if cart id dosnt exist (!cartId) then post call axios
@@ -36,7 +36,7 @@ function CreateCart() {
       .then((response) => {
         console.log(`Cart Created, Cart ID: ${response.data.id}`);
         console.log(response);
-        getCarts(response.data);
+        // getCarts(response.data);
       })
       .catch((err) => {
         console.error(err);

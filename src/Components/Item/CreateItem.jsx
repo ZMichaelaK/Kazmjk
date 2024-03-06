@@ -3,8 +3,10 @@ import axios from "axios";
 import { Card, CardBody } from "react-bootstrap";
 import DisplayItem from "./DisplayItem";
 import ItemStructure from "./ItemStructure";
+import { useReward } from "react-rewards";
 
 function CreateItem(props) {
+  const {reward: balloonsReward, isAnimating: isBalloonsAnimating} = useReward('balloonsReward', 'balloons');
   const [itemName, setItemName] = useState("");
   const [itemDescription, setItemDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -45,6 +47,7 @@ function CreateItem(props) {
         setQuantity("");
         setImageUrl("");
         getItems();
+        balloonsReward();
       })
       .catch((err) => console.error(err));
   }
@@ -133,9 +136,11 @@ function CreateItem(props) {
           style={{ marginLeft: "43%" }}
           type="submit"
           className="btn btn-success btn-lg"
+          disabled={isBalloonsAnimating}
         >
           Submit
         </button>
+        <span id="balloonsReward" />
       </form>
       <br />
       <br />

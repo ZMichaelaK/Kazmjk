@@ -35,20 +35,8 @@ function ItemStructure(props) {
     // .catch((err) => console.error(err));
   }
 
-  const newCart = [];
-  for (let cart of carts) {
-    newCart.push(
-      <CartStructure
-        key={cart.isInCart}
-        id={cart.id}
-        isInCart={cart.isInCart}
-        itemName={cart.itemName}
-        quantity={cart.quantity}
-        price={cart.price}
-      />
-    );
-  }
-
+  
+  
   return (
     <div>
       <div style={{ marginLeft: "20px", maxWidth: "100%" }} className="col">
@@ -72,7 +60,8 @@ function ItemStructure(props) {
 
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
-                  <AddItemToCart />
+                  <AddItemToCart 
+                  itemId={props.itemId}/>
                 </li>
                 <li className="list-group-item">
                   <button
@@ -97,7 +86,6 @@ function ItemStructure(props) {
           </div>
         </div>
       </div>
-      <div>{newCart}</div>
     </div>
   );
 }
