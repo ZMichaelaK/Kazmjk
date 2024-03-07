@@ -10,7 +10,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{margin: "auto", textAlign: "center", transform: "translate(40px, 30%)"}} className="login-wrapper">
+    <div style={{textAlign: "center", display: "grid", placeItems:"center", marginTop: "12%"}} className="login-wrapper">
       <h1 style={{fontSize: "60px"}}>Please Log In</h1>
       <br />
       <form style={{fontSize:"30px"}} onSubmit={handleSubmit}>
