@@ -10,7 +10,7 @@ function CreateItem(props) {
   const [itemName, setItemName] = useState("");
   const [itemDescription, setItemDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(0);
   const [items, setItems] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
   const [submittedItem, setSubmittedItem] = useState([]);
@@ -44,7 +44,7 @@ function CreateItem(props) {
         setItemName("");
         setItemDescription("");
         setPrice("");
-        setQuantity("");
+        setQuantity(0);
         setImageUrl("");
         getItems();
         balloonsReward();
@@ -119,7 +119,8 @@ function CreateItem(props) {
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
           id="itemQuantity"
-          type="text"
+          type="number"
+          min="1"
           className="form-control"
         />
         <br />

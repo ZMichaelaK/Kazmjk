@@ -10,6 +10,8 @@ function Cart() {
     const [quantity, setQuantity] = useState("");
     const [items, setItems] = useState([]);
     const params = useParams();
+    let cartTotal = 0;
+
 
     function getCarts(){
         axios.get("http://localhost:8085/cart/get")
@@ -41,7 +43,7 @@ function Cart() {
     for (let item of items){
     newCart.push(
       <CartStructure
-        key={item.id}
+        key={item.itemName + "" + item.price}
         itemName={item.itemName}
         price={item.price}
         quantity={item.quantity}
@@ -52,9 +54,16 @@ function Cart() {
     }
   }
 
+  for (let item of items){
+    cartTotal = cartTotal + item.price * item.quantity
+  }
+
     return ( 
         <div>
+          <h4>Total to pay: £{cartTotal}</h4>
+          <div style={{display: "grid", rowGap: "10px"}}>
             {newCart}
+            </div>
         </div>
      );
 }
