@@ -5,7 +5,7 @@ function ItemEdit() {
     const [itemName, setItemName] = useState("");
   const [itemDescription, setItemDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(0);
   const [items, setItems] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
   const [submittedItem, setSubmittedItem] = useState([]);
@@ -76,7 +76,8 @@ function ItemEdit() {
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
           id="itemQuantity"
-          type="text"
+          type="number"
+          min="1"
           className="form-control"
         />
         <br />

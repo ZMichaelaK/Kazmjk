@@ -49,6 +49,8 @@ function Cart() {
         quantity={item.quantity}
         getCarts={getCarts}
         getItems={getItems}
+        
+       
       />
     );
     }

@@ -3,8 +3,19 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function CartStructure(props) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
+
+  const incrementQuantity = () => {
+    let quantity = props.quantity;
+     setQuantity(prevQuantity => prevQuantity + 1);
+  };
+ 
+  const decrementQuantity = () => {
+     if (quantity > 1) {
+       setQuantity(prevQuantity => prevQuantity - 1);
+     }
+  };
 
 
   const params = useParams();
@@ -13,8 +24,8 @@ function CartStructure(props) {
         <p className="card-title">{props.itemName}</p>
         <p className="card-title">£{props.price}</p>
         <p className="card-title">Quantity x{props.quantity}</p>
-        <button  style={{marginTop: "5px"}}  className="btn btn-success">Quantity +1</button>
-        <button  style={{marginLeft: "10px", marginTop: "5px"}} className="btn btn-danger ">Quantity -1</button>
+        <button onClick={incrementQuantity}  style={{marginTop: "5px"}}  className="btn btn-success">Quantity +1</button>
+        <button  onClick={decrementQuantity} style={{marginLeft: "10px", marginTop: "5px"}} className="btn btn-danger ">Quantity -1</button>
       </div>
      );
     }
