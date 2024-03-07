@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CartStructure from "./CartStructure";
+import cartLogo from "../../Images/cart-shopping-svgrepo-com.svg";
 
 
 function CreateCart() {
@@ -36,20 +37,26 @@ function CreateCart() {
       .then((response) => {
         console.log(`Cart Created, Cart ID: ${response.data.id}`);
         console.log(response);
-        // getCarts(response.data);
+         getCarts();
       })
       .catch((err) => {
         console.error(err);
+        
       });
   };
+
+  function cartExists(){
+    return carts.length > 0;
+  }
   return (
     <div>
       <div>
-        <button onClick={handleClick}>Create New Cart</button>
+        <button disabled={cartExists()} className="btn btn-primary" onClick={handleClick}>Create New Cart <img style={{display: "inline" }} src={cartLogo} width="30px"/></button>
       </div>
 
       <div>{cartList}</div>
     </div>
+
   );
 }
 

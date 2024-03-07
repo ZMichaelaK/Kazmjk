@@ -10,12 +10,15 @@ function CartPage() {
     <div
     >
       <div>
-      <div>
-      <h1>Cart</h1>
-  
+      <div style={{display: "flex", alignItems: "center"}}>
+      <h1 style={{textAlign: "center", marginLeft: "250px"}}>Cart</h1>
+      <div style={{marginLeft: "50px"}}>
+        <br />
+      <CreateCart/>
+      <br />
+      </div>
       </div>
       <div>
-      <CreateCart/>
       </div>
       <div>
       
